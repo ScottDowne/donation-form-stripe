@@ -15,7 +15,7 @@ app.use(express.bodyParser());
 app.get('/stripe',
   function(req,res){
     // add a page here indicating that there is nothing to see
-    res.send("Scram!")
+    res.send("Scram!");
   }
 );
 
@@ -26,14 +26,16 @@ app.post('/stripe',
 
     var stripeToken = transaction.stripeToken;
     // create charge
+
     var charge = {
-      amount: transaction.amount_other, 
+      // stripe works in cents
+      amount: transaction.amount_other * 100,
       currency: 'USD',
       card: stripeToken
     };
     stripe.charges.create(charge,
       function(err, charge) {
-        if (err) [
+        if (err) {
           console.log(err);
         } else {
           res.json(charge);

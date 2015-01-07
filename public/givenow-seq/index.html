@@ -2189,9 +2189,9 @@ ol.progress li.active::before {
             });
             function submitSuccess(data, textStatus, XHR) {
               if (win.location.assign) {
-                win.location.assign(data.redirect_url);
+                win.location.assign("http://localhost:2015/givenow-seq/thank-you.html");
               } else {
-                win.location = data.redirect_url;
+                win.location = "http://localhost:2015/givenow-seq/thank-you.html";
               }
             }
       
